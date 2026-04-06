@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיעורים פרטיים - יצחק מורה מקצועי</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .instructor {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f39c12;
+            margin-top: 10px;
+        }
+        
+        .instructor-bio {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin: 0;
+            padding: 30px 35px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .bio-content h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        .bio-text {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .achievements {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .achievement {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #495057;
+            text-align: center;
+            border-left: 3px solid #27ae60;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .testimonials {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-right: 4px solid #3498db;
+            border-radius: 8px;
+        }
+        
+        .testimonial-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .testimonial-text {
+            color: #495057;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+        
+        .bio-highlight {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-style: italic;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.3);
+        }
+        
+        .form-section {
+            padding: 35px;
+        }
+        
+        .form-intro {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Heebo', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Heebo', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        .location-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .location-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px 15px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+        
+        .location-card:hover {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+        
+        .location-card.selected {
+            border-color: #3498db;
+            background: #3498db;
+            color: white;
+        }
+        
+        .location-card input {
+            display: none;
+        }
+        
+        .children-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .children-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .add-child-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .add-child-btn:hover {
+            background: #2ecc71;
+        }
+        
+        .child-item {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .child-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .remove-child-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .remove-child-btn:hover {
+            background: #c0392b;
+        }
+        
+        .child-inputs {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+        
+        .generate-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .generate-btn:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .error {
+            border-color: #e74c3c !important;
+            background: #fdf2f2 !important;
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        .message-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            margin-top: 20px;
+            white-space: pre-line;
+            font-size: 0.95rem;
+            color: #495057;
+            display: none;
+        }
+        
+        .whatsapp-link {
+            background: linear-gradient(45deg, #25D366, #20c957);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: none;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .subject-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .subject-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 20px 15px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+            line-height: 1.4;
+        }
+        
+        .subject-card:hover {
+            border-color: #3498db;
+            background: #e3f2fd;
+        }
+        
+        .subject-card.selected {
+            border-color: #3498db;
+            background: #3498db;
+            color: white;
+        }
+        
+        .subject-card input {
+            display: none;
+        }
+        
+        .subject-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        @media (max-width: 600px) {
+            .location-options, .subject-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .child-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+            
+            .instructor-bio {
+                padding: 20px;
+            }
+            
+            .achievements {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .achievement {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 למידה מקצועית עם תוצאות מוכחות 📚</h1>
+            <p>הוראה אישית המותאמת לקצב שלך ולמטרות שלך</p>
+            <p>שפות • ראיית חשבון • לימודי חשמל • בגרויות</p>
+            <div class="instructor">יצחק - בעל שורת הסמכות מקצועיות ואקדמיות</div>
+        </div>
+        
+        <div class="instructor-bio">
+            <div class="bio-content">
+                <h3>🎓 הרקע המקצועי</h3>
+                <div class="bio-text">
+                    <strong>יצחק</strong> - מרצה ומורה פרטי עם הכשרה אקדמית מלאה<br>
+                    מאות תלמידים מרוצים בכל הגילאים משתפים בהצלחותיהם
+                </div>
+                
+                <div class="achievements">
+                    <div class="achievement">🎓 מומחה לשפות</div>
+                    <div class="achievement">💼 מוסמך בראיית חשבון</div>
+                    <div class="achievement">⚡ הנדסאי חשמל</div>
+                    <div class="achievement">📚 בעל ניסיון רב בהכנה לבגרויות</div>
+                </div>
+                
+                <div class="bio-highlight">
+                    <strong>המטרה שלי:</strong> להפוך את היעדים שלך לאפשריים. אני כאן לא רק כדי להקנות לך ידע או שפה, אלא כדי להוכיח לך שהציונים והמטרות שהצבת לעצמך נמצאים בהישג יד. נעשה זאת באמצעות תוכנית לימודים המותאמת אישית למידותיך, כלים ייחודיים וסביבה תומכת שדוחפת להצלחה.
+                    <br><br>
+                    <strong>החזון:</strong> להעניק לך ביטחון עצמי בלתי מעורער. אני שואף להוביל אותך תהליך שבסופו הידע והכישורים שרכשת ישרתו אותך בכל מקום ובכל זמן – בטבעיות ובקלות. הדרך לשם תהיה חוויה מהנה, מעצימה ומלאת סיפוק.
+                </div>
+                
+                <div class="testimonials">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px; text-align: center;">⭐ מה אומרים עליי התלמידים</h4>
+                    
+                    <div class="testimonial-item">
+                        <div class="testimonial-name">חיים <span style="color: #f39c12;">⭐⭐⭐⭐⭐</span></div>
+                        <div class="testimonial-text">"יצחק מורה ממוקד מטרה, מלמד באופן ברור ורגוע ומשרה אווירת ביטחון. הלמידה בעזרת תכנית לימודים שיצחק בנה לי וחומרי תרגול רבים. ממש תותח בתחום, מרגיש שיפור עצום."</div>
+                    </div>
+                    
+                    <div class="testimonial-item">
+                        <div class="testimonial-name">לילה <span style="color: #f39c12;">⭐⭐⭐⭐⭐</span></div>
+                        <div class="testimonial-text">"אין עליך, מורה מדהים ואוהב לעזור ודואג לכל מישהו ילמד איתו תודה רבה רבה יצחק"</div>
+                    </div>
+                    
+                    <div class="testimonial-item">
+                        <div class="testimonial-name">רגהד <span style="color: #f39c12;">⭐⭐⭐⭐⭐</span></div>
+                        <div class="testimonial-text">"מורה נהדר, מעביר את החומר בצורה ברורה ומפורטת"</div>
+                    </div>
+                    
+                    <div class="testimonial-item">
+                        <div class="testimonial-name">שמעון פרץ <span style="color: #f39c12;">⭐⭐⭐⭐⭐</span></div>
+                        <div class="testimonial-text">"השיעור היה מעולה ברמה גבוהה והוסבר היטב נהנתי והייתי בהקשבה מלאה ...מחכה לשיעור הבא!"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <div class="form-intro">
+                <h2>מוכן/ה להתחיל את המסע יחד?</h2>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-right: 4px solid #2196F3; box-shadow: 0 3px 10px rgba(33, 150, 243, 0.2);">
+                <p style="color: #1565C0; font-size: 1.05rem; line-height: 1.7; margin: 0; text-align: center; font-weight: 500;">
+                    הצטרפו למאות תלמידים שכבר הוכיחו לעצמם שהכל אפשרי. אחרי אלפי שעות לימוד והישגים חסרי תקדים, הנוסחה להצלחה מחכה גם לך. לקבלת פרטים ותחילת התהליך:
+                </p>
+            </div>
+            
+            <div class="form-group">
+                <label for="studentName">שם מלא <span class="required">*</span></label>
+                <input type="text" id="studentName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">מספר טלפון <span class="required">*</span></label>
+                <input type="tel" id="phone" required placeholder="050-1234567">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">אימייל (לא חובה)</label>
+                <input type="email" id="email" placeholder="example@gmail.com">
+            </div>
+            
+            <div class="form-group">
+                <label>באיזה תחום אתה מעוניין ללמוד? <span class="required">*</span></label>
+                <div class="subject-grid">
+                    <div class="subject-card" onclick="selectSubject('שפות', this)">
+                        <input type="radio" name="subject" value="שפות">
+                        <div class="subject-icon">🌍</div>
+                        <div><strong>שפות</strong></div>
+                    </div>
+                    <div class="subject-card" onclick="selectSubject('ראיית חשבון', this)">
+                        <input type="radio" name="subject" value="ראיית חשבון">
+                        <div class="subject-icon">💼</div>
+                        <div><strong>ראיית חשבון</strong></div>
+                    </div>
+                    <div class="subject-card" onclick="selectSubject('לימודי חשמל', this)">
+                        <input type="radio" name="subject" value="לימודי חשמל">
+                        <div class="subject-icon">⚡</div>
+                        <div><strong>לימודי חשמל</strong></div>
+                    </div>
+                    <div class="subject-card" onclick="selectSubject('בגרויות', this)">
+                        <input type="radio" name="subject" value="בגרויות">
+                        <div class="subject-icon">🎓</div>
+                        <div><strong>בגרויות</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group" id="languageGroup" style="display: none;">
+                <label for="languageSelect">באיזו שפה אני מעוניין/ת? <span class="required">*</span></label>
+                <select id="languageSelect">
+                    <option value="">בחר שפה</option>
+                    <option value="לימודי לשון">📖 לימודי לשון</option>
+                    <option value="אנגלית">🌐 אנגלית</option>
+                    <option value="צרפתית">🗼 צרפתית</option>
+                    <option value="ספרדית">💃 ספרדית</option>
+                    <option value="איטלקית">🍕 איטלקית</option>
+                    <option value="ערבית מדוברת">🕌 ערבית מדוברת</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="goalGroup" style="display: none;">
+                <label for="goalLevel">מה המטרה שלי מהתכנית? <span class="required">*</span></label>
+                <select id="goalLevel">
+                    <option value="">בחר מטרה</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>סוג השיעורים <span class="required">*</span></label>
+                <div class="location-options">
+                    <div class="location-card" onclick="selectLessonType('שיעורים אישיים', this)">
+                        <input type="radio" name="lessonType" value="שיעורים אישיים">
+                        <div><strong>שיעורים אישיים</strong></div>
+                        <div style="margin-top: 8px;">למידה אישית<br>התקדמות מהירה</div>
+                    </div>
+                    <div class="location-card" onclick="selectLessonType('קבוצה קטנה (5-10 אנשים)', this)">
+                        <input type="radio" name="lessonType" value="קבוצה קטנה (5-10 אנשים)">
+                        <div><strong>קבוצה קטנה</strong></div>
+                        <div style="margin-top: 8px;">5-10 אנשים<br>אינטראקציה חברתית</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="currentLevel">מה הרמה הנוכחית שלך? <span class="required">*</span></label>
+                <select id="currentLevel" required>
+                    <option value="">בחר רמה</option>
+                    <option value="מתחיל מוחלט">🌱 מתחיל מוחלט - אין לי רקע כלל</option>
+                    <option value="רמה בסיסית">📚 רמה בסיסית - יש לי קצת רקע</option>
+                    <option value="רמה בינונית">📈 רמה בינונית - יש לי בסיס טוב</option>
+                    <option value="רמה מתקדמת">⭐ רמה מתקדמת - רוצה לשפר</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="comments">לשאלות או הערות נוספות, ניתן למלא את התיבה למטה :)</label>
+                <textarea id="comments" rows="3" placeholder="למשל: מתי נוח לך לקיים שיעורים? האם יש נושאים ספציפיים שמעניינים אותך?"></textarea>
+            </div>
+            
+            <button type="button" class="generate-btn" onclick="generateMessage()">
+                📝 תיאום שיחת ייעוץ אישית
+            </button>
+            
+            <div id="messagePreview" class="message-preview"></div>
+            
+            <a id="whatsappLink" class="whatsapp-link" href="#" onclick="openWhatsApp(); return false;" target="_blank">
+                📱 שלח הודעה בוואטסאפ
+            </a>
+        </div>
+    </div>
+
+    <script>
+        let selectedSubject = null;
+        let selectedLessonType = null;
+        let currentMessage = '';
+
+        const goalsBySubject = {
+            'שפות': [
+                { value: 'דיבור קריאה וכתיבה', text: '🌟 מעוניין לדעת את השפה על בוריה: דיבור, קריאה וכתיבה' },
+                { value: 'שיחה יומיומית', text: '💬 לדבר בצורה שוטפת בשיחות יומיומיות' },
+                { value: 'עבודה ועסקים', text: '💼 לצורכי עבודה ועסקים' },
+                { value: 'נסיעות', text: '✈️ הכנה לנסיעות ותיירות' },
+                { value: 'לימודים אקדמיים', text: '🎓 לימודים אקדמיים או מבחנים' },
+                { value: 'שיפור כללי', text: '⭐ שיפור כללי של השפה' },
+                { value: 'הכנה לבחינות', text: '📝 הכנה לבחינות (בגרות/פסיכומטרי וכו\')' }
+            ],
+            'ראיית חשבון': [
+                { value: 'הכנה למבחנים', text: '📝 הכנה למבחנים' },
+                { value: 'למידת ניהול ספרים', text: '💼 למידת ניהול ספרים' },
+                { value: 'דוחות כספיים', text: '📊 דוחות כספיים' },
+                { value: 'שיפור מקצועי', text: '⭐ שיפור מקצועי בתחום' }
+            ],
+            'לימודי חשמל': [
+                { value: 'הכנה למבחני הסמכה', text: '📝 הכנה למבחני הסמכה (יג\' יד ומה"ט)' },
+                { value: 'רענון ידע', text: '🔄 רענון ידע מקצועי' },
+                { value: 'קידום בעבודה', text: '📈 קידום בעבודה הנוכחית' },
+                { value: 'מעבר מקצוע', text: '🔧 מעבר לתחום החשמל' },
+                { value: 'שיפור כללי', text: '⭐ שיפור כללי בתחום' }
+            ],
+            'בגרויות': [
+                { value: 'הכנה לבגרויות', text: '🎓 הכנה מלאה לבגרויות' },
+                { value: 'השלמת בגרויות', text: '📚 השלמת נושאים לבגרויות' },
+                { value: 'העלאת ציון', text: '⬆️ העלאת ציון בבגרות' },
+                { value: 'תיכון', text: '🏫 ליווי במהלך הלימודים בתיכון' },
+                { value: 'מקצוע ספציפי', text: '📖 חיזוק במקצוע ספציפי' }
+            ]
+        };
+
+        function selectSubject(subject, element) {
+            document.querySelectorAll('.subject-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            selectedSubject = subject;
+            
+            // Show language selector only for languages
+            const languageGroup = document.getElementById('languageGroup');
+            if (subject === 'שפות') {
+                languageGroup.style.display = 'block';
+            } else {
+                languageGroup.style.display = 'none';
+                document.getElementById('languageSelect').value = '';
+            }
+            
+            // Update goals based on subject
+            updateGoals(subject);
+        }
+
+        function updateGoals(subject) {
+            const goalGroup = document.getElementById('goalGroup');
+            const goalSelect = document.getElementById('goalLevel');
+            
+            if (subject && goalsBySubject[subject]) {
+                goalGroup.style.display = 'block';
+                
+                // Clear and populate goals
+                goalSelect.innerHTML = '<option value="">בחר מטרה</option>';
+                goalsBySubject[subject].forEach(goal => {
+                    const option = document.createElement('option');
+                    option.value = goal.value;
+                    option.textContent = goal.text;
+                    goalSelect.appendChild(option);
+                });
+            } else {
+                goalGroup.style.display = 'none';
+            }
+        }
+
+        function selectLessonType(type, element) {
+            document.querySelectorAll('.location-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+            selectedLessonType = type;
+        }
+
+        function generateMessage() {
+            // Clear previous errors
+            document.querySelectorAll('input, select').forEach(field => {
+                field.classList.remove('error');
+            });
+            
+            // Get form values
+            const studentName = document.getElementById('studentName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const currentLevel = document.getElementById('currentLevel').value;
+            const currentLevelText = document.getElementById('currentLevel').selectedIndex > 0 ? 
+                document.getElementById('currentLevel').options[document.getElementById('currentLevel').selectedIndex].text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{E0000}-\u{E007F}\u{FE00}-\u{FE0F}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2300}-\u{23FF}\u{2B50}\u{231A}-\u{231B}\u{23E9}-\u{23F3}\u{25FD}-\u{25FE}\u{2614}-\u{2615}\u{2648}-\u{2653}\u{267F}\u{2693}\u{26A1}\u{26AA}-\u{26AB}\u{26BD}-\u{26BE}\u{26C4}-\u{26C5}\u{26CE}\u{26D4}\u{26EA}\u{26F2}-\u{26F3}\u{26F5}\u{26FA}\u{26FD}\u{2705}\u{270A}-\u{270B}\u{2728}\u{274C}\u{274E}\u{2753}-\u{2755}\u{2757}\u{2795}-\u{2797}\u{27B0}\u{27BF}\u{2B1B}-\u{2B1C}\u{2B50}\u{2B55}]/gu, '').trim() : '';
+            const goalLevel = document.getElementById('goalLevel').value;
+            const goalLevelText = document.getElementById('goalLevel').selectedIndex > 0 ? 
+                document.getElementById('goalLevel').options[document.getElementById('goalLevel').selectedIndex].text.replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{E0000}-\u{E007F}\u{FE00}-\u{FE0F}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FA70}-\u{1FAFF}\u{2300}-\u{23FF}\u{2B50}\u{231A}-\u{231B}\u{23E9}-\u{23F3}\u{25FD}-\u{25FE}\u{2614}-\u{2615}\u{2648}-\u{2653}\u{267F}\u{2693}\u{26A1}\u{26AA}-\u{26AB}\u{26BD}-\u{26BE}\u{26C4}-\u{26C5}\u{26CE}\u{26D4}\u{26EA}\u{26F2}-\u{26F3}\u{26F5}\u{26FA}\u{26FD}\u{2705}\u{270A}-\u{270B}\u{2728}\u{274C}\u{274E}\u{2753}-\u{2755}\u{2757}\u{2795}-\u{2797}\u{27B0}\u{27BF}\u{2B1B}-\u{2B1C}\u{2B50}\u{2B55}]/gu, '').trim() : '';
+            const comments = document.getElementById('comments').value.trim();
+            const language = document.getElementById('languageSelect').value;
+            const languageSelect = document.getElementById('languageSelect');
+            const languageText = languageSelect.selectedIndex > 0 ? 
+                languageSelect.options[languageSelect.selectedIndex].text.replace(/[\u{1F000}-\u{1FFFF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu, '').trim() : '';
+            
+            let isValid = true;
+            
+            // Validate required fields
+            if (!studentName) {
+                document.getElementById('studentName').classList.add('error');
+                isValid = false;
+            }
+            
+            if (!phone) {
+                document.getElementById('phone').classList.add('error');
+                isValid = false;
+            }
+            
+            if (!selectedSubject) {
+                alert('אנא בחר תחום לימוד');
+                isValid = false;
+            }
+            
+            if (selectedSubject === 'שפות' && !language) {
+                document.getElementById('languageSelect').classList.add('error');
+                alert('אנא בחר שפה');
+                isValid = false;
+            }
+            
+            if (!selectedLessonType) {
+                alert('אנא בחר סוג שיעורים (אישי או קבוצה)');
+                isValid = false;
+            }
+            
+            if (!currentLevel) {
+                document.getElementById('currentLevel').classList.add('error');
+                alert('חובה לבחור את הרמה הנוכחית');
+                isValid = false;
+            }
+            
+            if (!goalLevel) {
+                document.getElementById('goalLevel').classList.add('error');
+                alert('חובה לבחור את המטרה');
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                alert('אנא מלא את כל השדות החובה');
+                return;
+            }
+            
+            // Create message with WhatsApp formatting
+            let message = `*פנייה לשיעורים פרטיים*\n\n`;
+            message += `*שם:* ${studentName}\n`;
+            message += `*טלפון:* ${phone}\n`;
+            if (email) message += `*אימייל:* ${email}\n`;
+            message += `*תחום לימוד:* ${selectedSubject}\n`;
+            if (selectedSubject === 'שפות' && languageText) {
+                message += `*שפה:* ${languageText}\n`;
+            }
+            message += `*סוג שיעורים:* ${selectedLessonType}\n`;
+            message += `*רמה נוכחית:* ${currentLevelText}\n`;
+            message += `*המטרה:* ${goalLevelText}\n`;
+            if (comments) message += `*הערות נוספות:* ${comments}\n`;
+            
+            // Show message preview
+            const messagePreview = document.getElementById('messagePreview');
+            messagePreview.textContent = message;
+            messagePreview.style.display = 'block';
+            
+            // Show WhatsApp link with proper URL
+            const whatsappLink = document.getElementById('whatsappLink');
+            const whatsappURL = `https://wa.me/972539612681?text=${encodeURIComponent(message)}`;
+            whatsappLink.href = whatsappURL;
+            whatsappLink.style.display = 'block';
+            
+            // Store message for sending
+            currentMessage = message;
+            
+            alert('ההודעה נוצרה! לחץ על "שלח הודעה בוואטסאפ" למטה');
+        }
+        
+        // Open WhatsApp function
+        function openWhatsApp() {
+            if (currentMessage) {
+                const whatsappURL = `https://wa.me/972539612681?text=${encodeURIComponent(currentMessage)}`;
+                
+                // Try multiple methods for Claude environment
+                try {
+                    // Method 1: Open in new window/tab
+                    const opened = window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+                    
+                    if (!opened || opened.closed) {
+                        // Method 2: If popup blocked, try direct navigation
+                        window.location.href = whatsappURL;
+                    }
+                } catch (error) {
+                    // Method 3: Fallback - direct navigation
+                    window.location.href = whatsappURL;
+                }
+                
+                // Show feedback
+                const link = document.getElementById('whatsappLink');
+                const originalText = link.textContent;
+                link.textContent = '✅ פותח וואטסאפ...';
+                
+                setTimeout(() => {
+                    link.textContent = originalText;
+                }, 2000);
+                
+            } else {
+                alert('צור הודעה קודם');
+            }
+        }
+    </script>
+</body>
+</html>
